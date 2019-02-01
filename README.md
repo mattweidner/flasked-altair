@@ -13,6 +13,9 @@ Inspired by the [Flasked-Vincent](https://github.com/iiSeymour/flasked-vincent) 
 ```
 $ git clone https://github.com/lemoncyb/flasked-altair.git
 $ cd flasked-altair
-$ python ./app.py
+$ python3 -m venv
+$ source venv/bin/activate
+$ pip3 install -r ./requirements.txt
+$ python3 ./app.py
 ```
 Visit http://localhost:5000 in your browser, that's it!

@@ -5,21 +5,19 @@
     <meta charset="utf-8">
 
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js">script></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.0-beta.30/vega.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.0-beta.2/vega-lite.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-beta.14/vega-embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.8.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/4.4.0/vega.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.6.0/vega-lite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.29.1/vega-embed.min.js"></script>
 
-    <script src="https://vega.github.io/datalib/datalib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datalib/1.9.2/datalib.min.js"></script>
 
     <!-- Vega Tooltip -->
-    <script src="https://vega.github.io/vega-tooltip/vega-tooltip.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://vega.github.io/vega-tooltip/vega-tooltip.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.15.0/vega-tooltip.js"></script>
 
     <style>hr, h3 {padding-bottom: 20px;}canvas {background-color: #fffff;}</style>
     <style>
@@ -36,12 +34,11 @@
     <div class="container">
 
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-          <li><a href="https://altair-viz.github.io/index.html">Altair</a></li>
-          <li><a href="https://vega.github.io/vega-lite/">Vega-Lite</a></li>
-          <li><a href="http://d3js.org/">D3</a></li>
-          <li><a href="http://flask.pocoo.org/">Flask</a></li>
+        <ul class="nav nav-pills justify-content-end">
+          <li class="nav-item"><a class="nav-link" href="https://altair-viz.github.io/index.html">Altair</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://vega.github.io/vega-lite/">Vega-Lite</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://d3js.org/">D3</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://flask.pocoo.org/">Flask</a></li>
         </ul>
         <h3 class="text-muted">Flasked Altair</h3>
       </div>
@@ -67,10 +64,10 @@
           actions: {export: true, source: false, editor: false}
         };
 
-        vega.embed("#"+div, url, opt, function(error, result) {
+        vegaEmbed("#"+div, url, opt).then(function(error, result) {
           // result.view is the Vega View, url is the original Vega-Lite specification
           vegaTooltip.vegaLite(result.view, url);
-        });
+        }).catch(console.error);
       }
 
       parse("/data/bar", "bar")
